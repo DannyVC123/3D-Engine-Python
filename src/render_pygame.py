@@ -5,6 +5,8 @@ from model_lib import Model_Lib
 from obj_parser import Obj_Parser
 from lin_alg import Lin_Alg
 
+import os
+
 class Render:
     w, h = 800, 800
 
@@ -52,11 +54,13 @@ class Render:
         pg.display.flip()
 
 if __name__ == "__main__":
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    obj_filename = os.path.join(current_dir, '../res/models/deer.obj')
     # dog = Obj_Parser.parse_obj('./models/ORIGAM_CHIEN_Free.obj', scale_factor = 5, color = [205, 175, 135])
     # wolf = Obj_Parser.parse_obj('./models/wolf_lp.obj', scale_factor=2, color=[164, 159, 150], has_vn=False)
-    # deer = Obj_Parser.parse_obj('./models/deer.obj', scale_factor = 0.5, color = [205, 175, 135], has_vn = False)
+    deer = Obj_Parser.parse_obj(obj_filename, scale_factor = 0.5, color = [205, 175, 135], has_vn = False)
     
     # pikachu = Obj_Parser.parse_obj('./models/pokemon/pikachu.obj', scale_factor = 8, color = [242, 210, 71], outward_vn = False)
-    squirtle = Obj_Parser.parse_obj('./models/pokemon/squirtle.obj', scale_factor = 8, color = [131, 206, 232])
+    # squirtle = Obj_Parser.parse_obj('../res/models/pokemon/squirtle.obj', scale_factor = 8, color = [131, 206, 232])
     
-    render = Render(squirtle)
+    render = Render(deer)

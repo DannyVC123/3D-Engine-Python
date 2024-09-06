@@ -1,7 +1,7 @@
 # Python 3D Engine
 A 3D Engine created in Python with minimal use of built-in graphics libraries. All linear algebra operations were implemented manually.
 
-Initially inspred by mattbatwings "I Made a 3D Renderer with just redstone!"
+Initially inspred by mattbatwings "[I Made a 3D Renderer with just redstone!](https://youtu.be/hFRlnNci3Rs)"
 
 [![Watch the video](https://img.youtube.com/vi/hFRlnNci3Rs/maxresdefault.jpg)](https://youtu.be/hFRlnNci3Rs)
 
@@ -24,7 +24,8 @@ Initially inspred by mattbatwings "I Made a 3D Renderer with just redstone!"
 
 ## Flat Shading
 - Dynamic lighting for each face of the model
-- **Math & Tutorial:** [3D Programming Fundamentals [Flat Shading] (ChiliTomatoNoodle)](https://youtu.be/wOyavGx28uU)
+- **Math:** [Lambertian Reflectance](https://en.wikipedia.org/wiki/Lambertian_reflectance#Use_in_computer_graphics)
+- **Tutorial:** [3D Programming Fundamentals [Flat Shading] (ChiliTomatoNoodle)](https://youtu.be/wOyavGx28uU)
 
 ## Triangle Rasterization
 - Fills each triangle by calculating which pixels lie within the three edges using the [top-left rule](https://en.wikipedia.org/wiki/Rasterisation#Triangle_rasterization)
