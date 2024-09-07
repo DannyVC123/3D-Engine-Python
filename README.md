@@ -32,9 +32,12 @@ Initially inspred by mattbatwings "[I Made a 3D Renderer with just redstone!](ht
 ## Triangle Rasterization
 - Fills each triangle by calculating which pixels lie within the three edges using the [top-left rule](https://en.wikipedia.org/wiki/Rasterisation#Triangle_rasterization)
 - Uses `pygame.PixelArray` instead of `pygame.draw.polygon`
+- Triangles have to be calculated manually
 - Doesn't look as clean as `pygame.draw.polygon` but is implemented without libraries and allows for features such as texture mapping
 - **Math:** [Linear equations](https://www.mathsisfun.com/algebra/line-equation-2points.html)
 - **Tutorial:** [3D Programming Fundamentals [Triangle Rasterization] (ChiliTomatoNoodle)](https://youtu.be/9A5TVh6kPLA)
+
+<img src="https://github.com/DannyVC123/3D-Engine-Python/blob/main/res/images/screenshots/4_triangles.jpg" style="height:300px;"/>
 <br/><br/>
 
 # .obj Files
