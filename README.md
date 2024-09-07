@@ -11,6 +11,7 @@ Initially inspred by mattbatwings "[I Made a 3D Renderer with just redstone!](ht
 - Uses `pygame.draw.polygon` to color faces
 - **Math:** [Weak Perspective Projection](https://en.wikipedia.org/wiki/3D_projection#Weak_perspective_projection)
 - **Tutorial:** [I Made a 3D Renderer with just redstone! (mattbatwings)](https://youtu.be/hFRlnNci3Rs)
+![alt_text](https://github.com/DannyVC123/3D-Engine-Python/blob/main/res/images/screenshots/00_wireframe.jpg)
 
 ## 3D Rotation
 - Rotates vertices by any angle *θ* around any unit vector **u** by clicking and dragging the 3D model
