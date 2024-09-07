@@ -19,7 +19,7 @@ class Model_Lib:
             [ 200, -200, -200], # 6
             [ 200, -200,  200], # 7
         ]
-        '''
+        
         faces = [
             [1, 0, 3, 2], # top
             [4, 5, 6, 7], # bottom
@@ -43,7 +43,7 @@ class Model_Lib:
             [3,7,2], # right
             [2,7,6]
         ]
-        
+        '''
         unit_normals = []
         for face in faces:
             vec1 = [vertices[face[1]][i] - vertices[face[0]][i] for i in range(3)]

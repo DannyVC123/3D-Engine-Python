@@ -168,8 +168,8 @@ class Model:
                 flat_coordinates.append(coordinate[0])
                 flat_coordinates.append(coordinate[1])
 
-            # pg.draw.polygon(window, self.colors[i], coordinates)
-            Triangle.draw(window, coordinates, self.shaded_colors[i])
+            pg.draw.polygon(window, self.colors[i], coordinates)
+            # Triangle.draw(window, coordinates, self.shaded_colors[i])
         
         '''
         for edge in self.edges:
