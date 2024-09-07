@@ -12,8 +12,7 @@ Initially inspred by mattbatwings "[I Made a 3D Renderer with just redstone!](ht
 - **Math:** [Weak Perspective Projection](https://en.wikipedia.org/wiki/3D_projection#Weak_perspective_projection)
 - **Tutorial:** [I Made a 3D Renderer with just redstone! (mattbatwings)](https://youtu.be/hFRlnNci3Rs)
 
-<img src="https://github.com/DannyVC123/3D-Engine-Python/blob/main/res/images/screenshots/00_wireframe.jpg" style="height:200px;"/>
-<img src="https://github.com/DannyVC123/3D-Engine-Python/blob/main/res/images/screenshots/01_colored.jpg" style="height:200px;"/>
+<img src="https://github.com/DannyVC123/3D-Engine-Python/blob/main/res/images/screenshots/00_wireframe.jpg" style="height:200px;"/><img src="https://github.com/DannyVC123/3D-Engine-Python/blob/main/res/images/screenshots/01_colored.jpg" style="height:200px;"/>
 
 ## 3D Rotation
 - Rotates vertices by any angle *θ* around any unit vector **u** by clicking and dragging the 3D model
