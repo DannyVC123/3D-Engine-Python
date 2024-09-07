@@ -26,6 +26,8 @@ Initially inspred by mattbatwings "[I Made a 3D Renderer with just redstone!](ht
 - **Math:** [Surface Normal Dot Product](https://en.wikipedia.org/wiki/Back-face_culling#Implementation)
 - **Tutorial:** [3D Programming Fundamentals [Backface Culling] (ChiliTomatoNoodle)](https://youtu.be/h_Aqol0oTs4)
 
+<img src="https://github.com/DannyVC123/3D-Engine-Python/blob/main/res/images/screenshots/20_bfc_0.jpg" style="height:200px;"/><img src="https://github.com/DannyVC123/3D-Engine-Python/blob/main/res/images/screenshots/21_bfc_1.jpg" style="height:200px;"/><img src="https://github.com/DannyVC123/3D-Engine-Python/blob/main/res/images/screenshots/22_bfc_2.jpg" style="height:200px;"/>
+
 ## Flat Shading
 - Dynamic lighting for each face of the model
 - **Math:** [Lambertian Reflectance](https://en.wikipedia.org/wiki/Lambertian_reflectance#Use_in_computer_graphics)
