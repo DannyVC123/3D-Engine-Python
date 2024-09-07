@@ -19,7 +19,7 @@ Initially inspred by mattbatwings "[I Made a 3D Renderer with just redstone!](ht
 - **Math:** [3D rotation matrix from axis and angle](https://en.wikipedia.org/wiki/Rotation_matrix#Rotation_matrix_from_axis_and_angle)
 - **Tutorial:** [I Made a 3D Renderer with just redstone! (mattbatwings)](https://youtu.be/hFRlnNci3Rs), Wikipedia (see above)
 
-<img src="https://github.com/DannyVC123/3D-Engine-Python/blob/main/res/images/screenshots/10_rot_0.jpg" style="height:300px;"/><img src="https://github.com/DannyVC123/3D-Engine-Python/blob/main/res/images/screenshots/11_rot_1.jpg" style="height:300px;"/><img src="https://github.com/DannyVC123/3D-Engine-Python/blob/main/res/images/screenshots/12_rot_2.jpg" style="height:300px;"/>
+<img src="https://github.com/DannyVC123/3D-Engine-Python/blob/main/res/images/screenshots/10_rot_0.jpg" style="height:200px;"/><img src="https://github.com/DannyVC123/3D-Engine-Python/blob/main/res/images/screenshots/11_rot_1.jpg" style="height:200px;"/><img src="https://github.com/DannyVC123/3D-Engine-Python/blob/main/res/images/screenshots/12_rot_2.jpg" style="height:200px;"/>
 
 ## Backface Culling
 - Does not render faces oriented away from the camera
