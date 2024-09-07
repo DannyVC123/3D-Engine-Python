@@ -9,13 +9,14 @@ import os
 
 class Render:
     w, h = 800, 800
+    current_dir = os.path.dirname(os.path.abspath(__file__))
 
     def __init__(self, model):
         self.window = pg.display.set_mode((Render.w, Render.h))
         pg.display.set_caption("3D Render")
 
         self.model = model
-        self.focal_length = 3000
+        self.focal_length = 1000
 
         self.run()
 
@@ -25,22 +26,30 @@ class Render:
 
         clock = pg.time.Clock()
         mouse_down = False
-        while True:
+        running = True
+        while running:
             for event in pg.event.get():
                 if event.type == pg.QUIT:
-                    pg.quit()
-                    sys.exit()
+                    running = False
                 elif event.type == pg.MOUSEBUTTONDOWN:
                     if not mouse_down and event.button == 1:  # Left mouse button
                         self.x0, self.y0 = event.pos
                         mouse_down = True
                 elif event.type == pg.MOUSEBUTTONUP:
                     mouse_down = False
+                elif event.type == pg.MOUSEWHEEL:
+                    self.focal_length += event.y * 20
+                    self.draw()
                 elif event.type == pg.MOUSEMOTION:
                     if mouse_down:  # Left mouse button pressed
                         self.complex_rotate(event.pos)
+                elif event.type == pg.KEYDOWN and event.key == pg.K_q:
+                    filename = os.path.join(Render.current_dir, '../res/images/screenshots/img.jpg')
+                    pg.image.save(self.window, filename)
 
             clock.tick(60)  # Limit to 60 FPS
+        
+        pg.quit()
 
     def complex_rotate(self, pos):
         x1, y1 = pos
@@ -50,17 +59,19 @@ class Render:
             x1 - Render.w / 2,
             Render.h - y1 - Render.h / 2
         )
+        self.draw()
+
+    def draw(self):
         self.model.draw(self.window, self.focal_length)
         pg.display.flip()
 
 if __name__ == "__main__":
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    obj_filename = os.path.join(current_dir, '../res/models/deer.obj')
+    obj_filename = os.path.join(Render.current_dir, '../res/models/deer.obj')
     # dog = Obj_Parser.parse_obj('./models/ORIGAM_CHIEN_Free.obj', scale_factor = 5, color = [205, 175, 135])
     # wolf = Obj_Parser.parse_obj('./models/wolf_lp.obj', scale_factor=2, color=[164, 159, 150], has_vn=False)
-    deer = Obj_Parser.parse_obj(obj_filename, scale_factor = 0.5, color = [205, 175, 135], has_vn = False)
+    # deer = Obj_Parser.parse_obj(obj_filename, scale_factor = 0.5, color = [205, 175, 135], has_vn = False)
     
     # pikachu = Obj_Parser.parse_obj('./models/pokemon/pikachu.obj', scale_factor = 8, color = [242, 210, 71], outward_vn = False)
     # squirtle = Obj_Parser.parse_obj('../res/models/pokemon/squirtle.obj', scale_factor = 8, color = [131, 206, 232])
     
-    render = Render(deer)
+    render = Render(Model_Lib.cube())
