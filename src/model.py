@@ -87,7 +87,7 @@ class Model:
                 [ b0, a0],
                 [-a0, b0]
             ]
-            inverse = Lin_Alg.get_inverse(A)
+            inverse = Lin_Alg.get_2d_inverse(A)
             sin_cos_vec = Lin_Alg.vector_matrix_multiplication([a1, b1], inverse)
             
             theta = atan2(sin_cos_vec[0], sin_cos_vec[1])

@@ -88,11 +88,17 @@ class Lin_Alg:
         return [-unit_vector[1], unit_vector[0]]
     
     @staticmethod
-    def get_inverse(matrix):
+    def get_2d_determinant(matrix):
+        a, b = [matrix[0][i] for i in range(2)]
+        c, d = [matrix[1][i] for i in range(2)]
+        return a * d - b * c
+    
+    @staticmethod
+    def get_2d_inverse(matrix):
         a, b = matrix[0]
         c, d = matrix[1]
 
-        coefficient = 1 / (a * d - b * c)
+        coefficient = 1 / Lin_Alg.get_2d_determinant(matrix)
         inverse = [
             [coefficient *  d, coefficient * -b],
             [coefficient * -c, coefficient *  a]
