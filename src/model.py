@@ -169,6 +169,7 @@ class Model:
                 flat_coordinates.append(coordinate[1])
 
             pg.draw.polygon(window, self.colors[i], coordinates)
+            pg.draw.polygon(window, 'black', coordinates, width = 1)
             # Triangle.draw(window, coordinates, self.shaded_colors[i])
         
         '''
