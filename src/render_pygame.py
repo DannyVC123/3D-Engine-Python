@@ -66,8 +66,8 @@ class Render:
         pg.display.flip()
 
 if __name__ == "__main__":
-    obj_filename = os.path.join(Render.current_dir, '../res/models/small_bowl.obj')
-    bowl = Obj_Parser.parse_obj(obj_filename, scale_factor = 500, color = [119, 82, 70])
+    # obj_filename = os.path.join(Render.current_dir, '../res/models/small_bowl.obj')
+    # bowl = Obj_Parser.parse_obj(obj_filename, scale_factor = 500, color = [119, 82, 70])
 
     # dog = Obj_Parser.parse_obj('./models/ORIGAM_CHIEN_Free.obj', scale_factor = 5, color = [205, 175, 135])
     # wolf = Obj_Parser.parse_obj('./models/wolf_lp.obj', scale_factor=2, color=[164, 159, 150], has_vn=False)
@@ -78,4 +78,4 @@ if __name__ == "__main__":
     # pikachu = Obj_Parser.parse_obj('./models/pokemon/pikachu.obj', scale_factor = 8, color = [242, 210, 71], outward_vn = False)
     # squirtle = Obj_Parser.parse_obj('../res/models/pokemon/squirtle.obj', scale_factor = 8, color = [131, 206, 232])
     
-    render = Render(bowl)
+    render = Render(Model_Lib.cube())

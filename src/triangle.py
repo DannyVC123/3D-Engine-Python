@@ -1,7 +1,55 @@
 import pygame as pg
 from math import *
 
+from lin_alg import Lin_Alg
+
 class Triangle:
+    @staticmethod
+    def triangulate(two_d_vertices, face):
+        triangles = []
+        
+        vertices_left = face.copy()
+        while len(vertices_left) > 3:
+            num_vertices_left = len(vertices_left)
+            for i in range(num_vertices_left):
+                # print(i)
+                curr_vertex = two_d_vertices[vertices_left[i]]
+
+                left_ind = (i + 1) % num_vertices_left
+                left_vertex = two_d_vertices[face[left_ind]]
+                left_vector  = [(left_vertex[j]  - curr_vertex[j]) for j in range(2)]
+
+                right_ind = (i - 1 + num_vertices_left) % num_vertices_left
+                right_vertex = two_d_vertices[face[right_ind]]
+                right_vector = [(right_vertex[j] - curr_vertex[j]) for j in range(2)]
+
+                # print(left_ind, right_ind)
+
+                cross_product = Lin_Alg.get_2d_determinant([left_vector, right_vector])
+                # print(cross_product)
+                if cross_product < 0:
+                    continue
+                
+                valid_ear = True
+                for j in range(num_vertices_left):
+                    if j == i or j == left_ind or j == right_ind:
+                        continue
+
+                    test_vertex = two_d_vertices[vertices_left[j]]
+                    test_vector = [test_vertex[k] - curr_vertex[k] for k in range(2)]
+                    cross_product = Lin_Alg.get_2d_determinant([right_vector, test_vector])
+                    if cross_product > 0:
+                        valid_ear = False
+                
+                if not valid_ear:
+                    continue
+                triangles.append([i, left_ind, right_ind])
+                vertices_left.remove(i)
+                break
+            
+        triangles.append(vertices_left)
+        return triangles
+    
     @staticmethod
     def draw(window, two_d_vertices, color):
         pixel_array = pg.PixelArray(window)
@@ -53,7 +101,6 @@ class Triangle:
             [vertices[1], [x_other, int(round(y_middle))], vertices[0]],
             [vertices[1], [x_other, int(round(y_middle))], vertices[2]]
         )
-        
 
     @staticmethod
     def get_slope_inv(p0, p1):
