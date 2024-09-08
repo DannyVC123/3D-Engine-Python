@@ -23,7 +23,7 @@ Initially inspred by mattbatwings "[I Made a 3D Renderer with just redstone!](ht
 
 ## Backface Culling
 - Does not render faces oriented away from the camera
-- Only works for strictly convex shapes
+- Does not work for convex shapes (see bowl model below)
 - **Math:** [Surface Normal Dot Product](https://en.wikipedia.org/wiki/Back-face_culling#Implementation)
 - **Tutorial:** [3D Programming Fundamentals [Backface Culling] (ChiliTomatoNoodle)](https://youtu.be/h_Aqol0oTs4)
 
