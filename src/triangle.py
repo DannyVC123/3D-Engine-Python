@@ -1,5 +1,6 @@
 import pygame as pg
 from math import *
+import copy
 
 from lin_alg import Lin_Alg
 
@@ -11,6 +12,7 @@ class Triangle:
         vertices_left = face.copy()
         while len(vertices_left) > 3:
             num_vertices_left = len(vertices_left)
+            selected_vertex = None
             for i in range(num_vertices_left):
                 # print(i)
                 curr_vertex = two_d_vertices[vertices_left[i]]
@@ -38,14 +40,16 @@ class Triangle:
                     test_vertex = two_d_vertices[vertices_left[j]]
                     test_vector = [test_vertex[k] - curr_vertex[k] for k in range(2)]
                     cross_product = Lin_Alg.get_2d_determinant([right_vector, test_vector])
+                    right_test_cross = Lin_Alg.get_2d_determinant([test_vector, right_vector])
                     if cross_product > 0:
                         valid_ear = False
                 
                 if not valid_ear:
                     continue
                 triangles.append([i, left_ind, right_ind])
-                vertices_left.remove(i)
+                selected_vertex = i
                 break
+            vertices_left.remove(selected_vertex)
             
         triangles.append(vertices_left)
         return triangles

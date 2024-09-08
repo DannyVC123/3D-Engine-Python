@@ -51,7 +51,7 @@ class Model_Lib:
 
             normal = Lin_Alg.cross_product(vec1, vec2)
             unit_normal = Lin_Alg.get_unit_vector(normal)
-            print(unit_normal)
+            # print(unit_normal)
 
             unit_normals.append(unit_normal)
 

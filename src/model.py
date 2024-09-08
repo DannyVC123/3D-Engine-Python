@@ -154,6 +154,7 @@ class Model:
         window.fill((255, 255, 255))
 
         two_d_vertices = self.project(focal_length, w, h)
+        print(two_d_vertices)
         self.shaded_colors = self.apply_lighting()
 
         for i in range(len(self.faces)):
@@ -162,18 +163,19 @@ class Model:
             if Lin_Alg.dot_product(view_vector, self.rotated_unit_normals[i]) >= 0:
                 continue
             
-            '''
+            
             if len(self.faces[i]) > 3:
+                print('more than 3', self.faces[i])
                 triangles = Triangle.triangulate(two_d_vertices, self.faces[i])
                 for triangle in triangles:
                     print(triangle)
-                    coordinates = [two_d_vertices[j] for j in triangle[i]]
-                    pg.draw.polygon(window, self.colors[i], coordinates)
+                    # coordinates = [two_d_vertices[j] for j in triangle[i]]
+                    # pg.draw.polygon(window, self.colors[i], coordinates)
             else:
-                print(triangle)
-                coordinates = [two_d_vertices[j] for j in self.faces[i]]
-                pg.draw.polygon(window, self.colors[i], coordinates)
-            '''
+                print('has 3', self.faces[i])
+                # coordinates = [two_d_vertices[j] for j in self.faces[i]]
+                # pg.draw.polygon(window, self.colors[i], coordinates)
+            
 
             coordinates = [two_d_vertices[j] for j in self.faces[i]]
             pg.draw.polygon(window, self.colors[i], coordinates)
