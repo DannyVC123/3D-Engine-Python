@@ -162,6 +162,7 @@ class Model:
             if Lin_Alg.dot_product(view_vector, self.rotated_unit_normals[i]) >= 0:
                 continue
             
+            '''
             if len(self.faces[i]) > 3:
                 triangles = Triangle.triangulate(two_d_vertices, self.faces[i])
                 for triangle in triangles:
@@ -172,6 +173,10 @@ class Model:
                 print(triangle)
                 coordinates = [two_d_vertices[j] for j in self.faces[i]]
                 pg.draw.polygon(window, self.colors[i], coordinates)
+            '''
+
+            coordinates = [two_d_vertices[j] for j in self.faces[i]]
+            pg.draw.polygon(window, self.colors[i], coordinates)
 
             # pg.draw.polygon(window, self.colors[i], coordinates)
             # pg.draw.polygon(window, 'black', coordinates, width = 1)

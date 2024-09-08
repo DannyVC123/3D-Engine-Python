@@ -12,6 +12,7 @@ class Render:
     current_dir = os.path.dirname(os.path.abspath(__file__))
 
     def __init__(self, model):
+        pg.init()
         self.window = pg.display.set_mode((Render.w, Render.h))
         pg.display.set_caption("3D Render")
 
@@ -21,8 +22,7 @@ class Render:
         self.run()
 
     def run(self):
-        self.model.draw(self.window, self.focal_length)
-        pg.display.flip()
+        self.draw()
 
         clock = pg.time.Clock()
         mouse_down = False
@@ -49,7 +49,7 @@ class Render:
 
             clock.tick(60)  # Limit to 60 FPS
         
-        pg.quit()
+        # pg.quit()
 
     def complex_rotate(self, pos):
         x1, y1 = pos
