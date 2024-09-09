@@ -156,18 +156,24 @@ class Model:
         two_d_vertices = self.project(focal_length, w, h)
         self.shaded_colors = self.apply_lighting()
 
-        for i in range(len(self.faces)):
-            view_vector = self.rotated_vertices[self.faces[i][0]].copy()
+        ordered_face_inds = self.draw_order()
+        for i in range(len(ordered_face_inds)):
+            index = ordered_face_inds[i]
+            view_vector = self.rotated_vertices[self.faces[index][0]].copy()
             view_vector[Model.Z] -= focal_length
-            if Lin_Alg.dot_product(view_vector, self.rotated_unit_normals[i]) >= 0:
+            if Lin_Alg.dot_product(view_vector, self.rotated_unit_normals[index]) >= 0:
                 continue
             
-            triangles = Triangle.triangulate(two_d_vertices, self.faces[i])
+            triangles = Triangle.triangulate(two_d_vertices, self.faces[index])
+            # pg.draw.polygon(window, self.shaded_colors[index], [two_d_vertices[j] for j in self.faces[index]])
+            # pg.draw.polygon(window, 'black', [two_d_vertices[j] for j in self.faces[index]], width = 1)
+            
             for triangle in triangles:
                 coordinates = [two_d_vertices[j] for j in triangle]
-                pg.draw.polygon(window, self.colors[i], coordinates)
+                pg.draw.polygon(window, self.shaded_colors[index], coordinates)
                 # Triangle.draw(window, coordinates, self.colors[i])
                 pg.draw.polygon(window, 'black', coordinates, width = 1)
+            
         
         '''
         for edge in self.edges:
