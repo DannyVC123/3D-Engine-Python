@@ -46,6 +46,9 @@ Initially inspred by mattbatwings "[I Made a 3D Renderer with just redstone!](ht
 
 ## Polygon Triangulation
 - Converts each 2D face into a set of triangles for rasterization
+- Examples shown below (left: `pygame.draw.polygon`, right: triangulation and rasterization)
+- **Algorithm:** [Ear Clipping](https://en.wikipedia.org/wiki/Polygon_triangulation#Ear_clipping_method)
+- **Tutorial:** [Polygon Triangulation - Overview of Ear Clipping](https://www.youtube.com/watch?v=QAdfkylpYwc&ab_channel=Two-BitCoding)
 
 <img src="https://github.com/DannyVC123/3D-Engine-Python/blob/main/res/images/screenshots/50_soccer_ball.jpg" style="height:200px;"/>
 
