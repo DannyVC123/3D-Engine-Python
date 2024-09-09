@@ -48,6 +48,7 @@ Initially inspred by mattbatwings "[I Made a 3D Renderer with just redstone!](ht
 - Converts each 2D face into a set of triangles for rasterization
 
 <img src="https://github.com/DannyVC123/3D-Engine-Python/blob/main/res/images/screenshots/50_soccer_ball.jpg" style="height:200px;"/>
+
 <img src="https://github.com/DannyVC123/3D-Engine-Python/blob/main/res/images/screenshots/51_umbrella_no_riangles.jpg" style="height:200px;"/><img src="https://github.com/DannyVC123/3D-Engine-Python/blob/main/res/images/screenshots/52_umbrella_w_triangles.jpg" style="height:200px;"/>
 
 
