@@ -7,29 +7,33 @@ from lin_alg import Lin_Alg
 class Triangle:
     @staticmethod
     def triangulate(two_d_vertices, face):
+        def in_side_triangle(test_vertex, start_point, end_point):
+            side_vector = [end_point[i] - start_point[i] for i in range(2)]
+            test_vector = [test_vertex[i] - start_point[i] for i in range(2)]
+            cross_product = Lin_Alg.get_2d_determinant([side_vector, test_vector])
+            return cross_product > 0
+
         triangles = []
-        
-        vertices_left = face.copy()
+        vertices_left = copy.deepcopy(face)
+
         while len(vertices_left) > 3:
             num_vertices_left = len(vertices_left)
             selected_vertex = None
             for i in range(num_vertices_left):
-                # print(i)
                 curr_vertex = two_d_vertices[vertices_left[i]]
 
                 left_ind = (i + 1) % num_vertices_left
-                left_vertex = two_d_vertices[face[left_ind]]
+                left_vertex = two_d_vertices[vertices_left[left_ind]]
                 left_vector  = [(left_vertex[j]  - curr_vertex[j]) for j in range(2)]
 
                 right_ind = (i - 1 + num_vertices_left) % num_vertices_left
-                right_vertex = two_d_vertices[face[right_ind]]
+                right_vertex = two_d_vertices[vertices_left[right_ind]]
                 right_vector = [(right_vertex[j] - curr_vertex[j]) for j in range(2)]
 
-                # print(left_ind, right_ind)
-
-                cross_product = Lin_Alg.get_2d_determinant([left_vector, right_vector])
-                # print(cross_product)
-                if cross_product < 0:
+                dot_product = Lin_Alg.dot_product(left_vector, right_vector)
+                determinant = Lin_Alg.get_2d_determinant([left_vector, right_vector])
+                angle = atan2(determinant, dot_product)
+                if angle > pi:
                     continue
                 
                 valid_ear = True
@@ -38,17 +42,20 @@ class Triangle:
                         continue
 
                     test_vertex = two_d_vertices[vertices_left[j]]
-                    test_vector = [test_vertex[k] - curr_vertex[k] for k in range(2)]
-                    cross_product = Lin_Alg.get_2d_determinant([right_vector, test_vector])
-                    right_test_cross = Lin_Alg.get_2d_determinant([test_vector, right_vector])
-                    if cross_product > 0:
+                    in_side_01 = in_side_triangle(test_vertex, curr_vertex, left_vertex)
+                    in_side_12 = in_side_triangle(test_vertex, left_vertex, right_vertex)
+                    in_side_20 = in_side_triangle(test_vertex, right_vertex, curr_vertex)
+                    
+                    if in_side_01 and in_side_12 and in_side_20:
                         valid_ear = False
-                
+                        break
                 if not valid_ear:
                     continue
-                triangles.append([i, left_ind, right_ind])
-                selected_vertex = i
+                
+                selected_vertex = vertices_left[i]
+                triangles.append([selected_vertex, vertices_left[left_ind], vertices_left[right_ind]])
                 break
+            
             vertices_left.remove(selected_vertex)
             
         triangles.append(vertices_left)
@@ -90,7 +97,6 @@ class Triangle:
             start_x, end_x = int(ceil(start_x)), int(ceil(end_x))
             
             # pg.draw.line(window, color, [start_x, y], [end_x, y])
-            # unberably slow
             for x in range(start_x, end_x + 1):
                 if 0 <= x < w and 0 <= y < h:
                     pixel_array[x, y] = color

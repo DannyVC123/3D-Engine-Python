@@ -78,4 +78,4 @@ if __name__ == "__main__":
     # pikachu = Obj_Parser.parse_obj('./models/pokemon/pikachu.obj', scale_factor = 8, color = [242, 210, 71], outward_vn = False)
     # squirtle = Obj_Parser.parse_obj('../res/models/pokemon/squirtle.obj', scale_factor = 8, color = [131, 206, 232])
     
-    render = Render(Model_Lib.cube())
+    render = Render(Model_Lib.soccer_ball())
